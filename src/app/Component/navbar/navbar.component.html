@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <!-- La barre de navigation utilise Bootstrap. Elle est définie avec la classe 'navbar' pour le style général et 'navbar-expand-lg' pour l'adaptation responsive. -->
+  <a class="navbar-brand" style="color: white; font-weight: bold;">GSB</a>
+  <!-- Le logo ou le titre de l'application dans la barre de navigation, avec une couleur blanche et un texte en gras. -->
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Le bouton hamburger qui s'affiche sur les petits écrans pour afficher/masquer le menu -->
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <!-- Le menu se trouve à l'intérieur de ce div qui sera masqué ou affiché en fonction de l'état de la navigation. -->
+    
+    <ul class="navbar-nav">
+      <!-- Liste des éléments de la barre de navigation -->
+      
+      <!-- Menu "Saisie" avec un sous-menu -->
+      <li class="nav-item dropdown" [class.active]="activeTab === 'saisie'">
+        <!-- Lorsqu'on est sur la page "Saisie", la classe "active" sera appliquée à cet élément -->
+        <a class="nav-link dropdown-toggle" routerLink="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+          Saisie
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <!-- Menu déroulant sous "Saisie" -->
+          <li><a class="dropdown-item" [routerLink]="'/forfait'" routerLinkActive="active" (click)="setActiveTab('forfait')">Forfait</a></li>
+          <!-- Lien vers la page "Forfait", avec un lien actif qui met à jour l'onglet actif lors du clic -->
+          <li><a class="dropdown-item" [routerLink]="'/hors-forfait'" routerLinkActive="active" (click)="setActiveTab('hors-forfait')">Hors Forfait</a></li>
+          <!-- Lien vers la page "Hors Forfait", avec un lien actif qui met à jour l'onglet actif lors du clic -->
+        </ul>
+      </li>
+
+      <!-- Menu "Consultation" -->
+      <li class="nav-item" [class.active]="activeTab === 'consultation'">
+        <a class="nav-link" [routerLink]="'/consultation'" routerLinkActive="active" (click)="setActiveTab('consultation')" style="color: white;">Consultation</a>
+        <!-- Lien vers la page "Consultation", avec une classe active appliquée lorsque l'onglet est actif -->
+      </li>
+
+      <!-- Menu "Déconnexion" -->
+      <li class="nav-item" [class.active]="activeTab === 'deconnexion'">
+        <a class="nav-link" [routerLink]="'/login'" routerLinkActive="active" (click)="setActiveTab('deconnexion')" style="color: white;">Déconnexion</a>
+        <!-- Lien vers la page "Login" (déconnexion), avec une classe active appliquée lors de l'activation de cet onglet -->
+      </li>
+    </ul>
+  </div>
+</nav>

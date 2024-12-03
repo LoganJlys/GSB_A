@@ -1,0 +1,53 @@
+/* Styles globaux */
+body {
+    background-color: #f3f3f3;
+    font-family: sans-serif;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Le container centralisé */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0;
+}
+
+/* La carte de connexion */
+.card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Le titre */
+h1 {
+    color: #004b87;
+    font-weight: bold;
+}
+
+/* Le bouton de soumission */
+.btn-primary {
+    background-color: #004b87;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* Erreur de validation */
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Utilisation des inputs */
+input {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}

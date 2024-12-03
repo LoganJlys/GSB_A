@@ -1,0 +1,85 @@
+<div class="container my-4 text-center">
+    <!-- Logo -->
+    <img src="assets/logo.png" alt="gsb-logo" class="mb-4" style="max-width: 150px;">
+  
+    <!-- Welcome Message -->
+    <h2 class="text-primary mb-4">Bienvenue chez GSB</h2>
+  
+    <!-- Month and Date Selection -->
+    <h5>Saisie fiche de frais pour le mois de <span class="text-primary">{{ mois }}</span></h5>
+    <div class="row justify-content-center mb-3">
+      <div class="col-auto">
+        <label>Saisie des frais pour la date du</label>
+        <input type="date" class="form-control" placeholder="jj/mm/aaaa" />
+      </div>
+      <div class="col-auto">
+        <label>au</label>
+        <input type="date" class="form-control" placeholder="jj/mm/aaaa" />
+      </div>
+    </div>
+  
+    <!-- Visitor Information -->
+    <div class="border rounded p-3 mb-3">
+      <h5 class="text-primary">VISITEUR</h5>
+      <div class="row">
+        <div class="col-md-4">
+          <label>Nom</label>
+          <input type="text" class="form-control" />
+        </div>
+        <div class="col-md-4">
+          <label>Prénom</label>
+          <input type="text" class="form-control" />
+        </div>
+        <div class="col-md-4">
+          <label>Matricule</label>
+          <input type="text" class="form-control" />
+        </div>
+      </div>
+    </div>
+  
+    <!-- Forfaitary Expenses -->
+    <div class="border rounded p-3">
+      <h5 class="text-primary">FRAIS FORFAITAIRES</h5>
+      <div class="table-responsive">
+        <table class="table table-bordered text-center">
+          <thead>
+            <tr>
+              <th>LIBELLE</th>
+              <th>QUANTITÉ</th>
+              <th>MONTANT UNITAIRE</th>
+              <th>TOTAL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nuitée</td>
+              <td><input type="number" class="form-control text-center" /></td>
+              <td>??€</td>
+              <td><input type="text" class="form-control text-center" disabled /></td>
+            </tr>
+            <tr>
+              <td>Repas midi</td>
+              <td><input type="number" class="form-control text-center" /></td>
+              <td>??€</td>
+              <td><input type="text" class="form-control text-center" disabled /></td>
+            </tr>
+            <tr>
+              <td>Kilométrage</td>
+              <td><input type="number" class="form-control text-center" /></td>
+              <td><input type="text" class="form-control text-center" placeholder="€ par km" /></td>
+              <td><input type="text" class="form-control text-center" disabled /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+  
+    <!-- Action Buttons -->
+    <div class="my-3">
+      <button class="btn btn-primary mx-2">Envoyer</button>
+      <button class="btn btn-secondary mx-2">Effacer</button>
+      <button class="btn btn-link text-muted mx-2">Retour</button>
+    </div>
+  </div>
+  

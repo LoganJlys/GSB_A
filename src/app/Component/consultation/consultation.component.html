@@ -1,0 +1,65 @@
+<div class="container mt-4">
+  <!-- Titre principal de la page -->
+  <h2 class="text-center">Consultation de Fiche de Frais</h2>
+
+  <!-- Section de sélection du mois avec un champ déroulant et un bouton -->
+  <div class="row mb-4 justify-content-center">
+    <div class="col-md-4">
+      <label for="mois" class="form-label">Sélectionnez un mois :</label> <!-- Label pour le sélecteur de mois -->
+      <select id="mois" [(ngModel)]="moisSelectionne" class="form-select"> <!-- Sélecteur lié à la variable moisSelectionne -->
+        <option *ngFor="let m of moisOptions" [value]="m">{{ m }}</option> <!-- Création d'une option pour chaque mois disponible -->
+      </select>
+    </div>
+    <div class="col-md-2">
+      <button (click)="consulterFicheDeFrais()" class="btn btn-primary mt-3 w-100">Consulter</button> <!-- Bouton pour appeler la méthode de consultation -->
+    </div>
+  </div>
+
+  <!-- Affichage de la fiche de frais si un mois est sélectionné -->
+  <div *ngIf="moisSelectionne" class="border rounded p-4"> <!-- La fiche n'est affichée que si un mois est sélectionné -->
+    <h3>Fiche de Frais pour le mois de {{ moisSelectionne }}</h3>
+
+    <!-- Affichage de l'état de la fiche de frais -->
+    <p><strong>État :</strong> {{ ficheDeFrais.etat || 'Non défini' }}</p> <!-- Affichage de l'état de la fiche de frais, si défini -->
+
+    <!-- Table des frais forfaitisés -->
+    <h4 class="mt-4">Frais Forfaitisés</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Quantité</th>
+          <th>Montant Unitaire (€)</th>
+          <th>Total (€)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let frais of ficheDeFrais.fraisForfaitises"> <!-- Boucle sur chaque frais forfaitisé -->
+          <td>{{ frais.type }}</td> <!-- Affichage du type de frais -->
+          <td>{{ frais.quantite }}</td> <!-- Affichage de la quantité de frais -->
+          <td>{{ frais.montantUnitaire }}</td> <!-- Affichage du montant unitaire -->
+          <td>{{ frais.quantite * frais.montantUnitaire | number: '1.2-2' }}</td> <!-- Calcul et affichage du total -->
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Table des frais hors forfait -->
+    <h4 class="mt-4">Frais Hors Forfait</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Libellé</th>
+          <th>Date</th>
+          <th>Montant (€)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let horsForfait of ficheDeFrais.fraisHorsForfait"> <!-- Boucle sur chaque frais hors forfait -->
+          <td>{{ horsForfait.libelle }}</td> <!-- Affichage du libellé du frais -->
+          <td>{{ horsForfait.date }}</td> <!-- Affichage de la date du frais -->
+          <td>{{ horsForfait.montant | number: '1.2-2' }}</td> <!-- Affichage du montant, formaté en nombre -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

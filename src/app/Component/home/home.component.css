@@ -1,0 +1,36 @@
+/* Container centralisé */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0;
+}
+
+/* Carte de message */
+.card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Titre */
+h1 {
+    color: #004b87;
+    font-weight: bold;
+}
+
+/* Bouton */
+.btn-primary {
+    background-color: #004b87;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* Texte */
+.text-primary {
+    color: #004b87;
+}

@@ -1,29 +1,34 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common'; // Nécessaire pour *ngIf et autres directives Angular
-import { FormsModule } from '@angular/forms'; // Nécessaire pour [(ngModel)]
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms'; // Import pour ngModel
+import { CommonModule } from '@angular/common'; // Import nécessaire pour les directives comme *ngIf
+import { Router } from '@angular/router'; // Import manquant pour Router
+import { AuthService } from '../../Service/AUTH/auth.service'; // Import du service Authentification
 
 @Component({
   selector: 'app-login',
-  standalone: true, // Standalone component
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  imports: [CommonModule, FormsModule] // Tu dois importer FormsModule et CommonModule ici
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterModule],  // Importation de tous les modules nécessaires
+  templateUrl: './Login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email: string = '';
-  password: string = '';
-  errorMessage: string = '';
+  email: string = '';  // Variable pour stocker l'email
+  password: string = '';  // Variable pour stocker le mot de passe
+  errorMessage: string = '';  // Déclaration de la propriété errorMessage
 
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
+  // Méthode de connexion
   login() {
-    if (this.email === 'comptable@gmail.com' && this.password === '123') {
-      this.router.navigate(['/home-comptable']);
-    } else if (this.email === 'medecin@gmail.com' && this.password === '123') {
-      this.router.navigate(['/home-medecin']);
-    } else {
-      this.errorMessage = 'Identifiants incorrects. Veuillez réessayer.';
-    }
+    this.authService.login(this.email, this.password).subscribe({
+      next: () => {
+        this.router.navigate(['/home-comptable']);  // Redirection après une connexion réussie
+      },
+      error: (err) => {
+        this.errorMessage = 'Erreur de connexion : ' + err.message;  // Affecte le message d'erreur
+        console.error('Erreur de connexion :', err);
+      }
+    });
   }
 }

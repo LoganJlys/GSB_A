@@ -12,4 +12,5 @@ export const routes: Routes = [
   { path: 'forfait', component: ForfaitComponent },
   { path: 'hors-forfait', component: HorsForfaitComponentyComponent },
   { path: 'consultation', component: ConsultationComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },  // Ajoute une redirection vers /login si la route est vide
 ];

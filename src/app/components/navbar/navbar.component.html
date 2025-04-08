@@ -1,0 +1,26 @@
+<nav *ngIf="isLoggedIn" class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" style="color: white; font-weight: bold;">GSB</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown" [class.active]="activeTab === 'saisie'">
+          <a class="nav-link dropdown-toggle" routerLink="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+            Saisie
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" [routerLink]="'/forfait'" routerLinkActive="active" (click)="setActiveTab('forfait')">Forfait</a></li>
+            <li><a class="dropdown-item" [routerLink]="'/hors-forfait'" routerLinkActive="active" (click)="setActiveTab('hors-forfait')">Hors Forfait</a></li>
+          </ul>
+        </li>
+        <li class="nav-item" [class.active]="activeTab === 'consultation'">
+          <a class="nav-link" [routerLink]="'/consultation'" routerLinkActive="active" (click)="setActiveTab('consultation')" style="color: white;">Consultation</a>
+        </li>
+        <li class="nav-item" [class.active]="activeTab === 'deconnexion'">
+          <a class="nav-link" routerLink="#" (click)="logout()" style="color: white;">Déconnexion</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  

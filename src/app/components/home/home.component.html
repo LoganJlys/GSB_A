@@ -1,0 +1,23 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <!-- Conteneur principal centré verticalement et horizontalement sur toute la hauteur de la fenêtre -->
+    <div class="card shadow-lg p-4 text-center" style="max-width: 400px; width: 100%; border-radius: 10px;">
+      <!-- Carte avec ombre et padding, largeur max de 400px et bords arrondis -->
+      
+      <h1 class="text-primary mb-4" style="font-size: 2rem;">Bienvenue</h1>
+      <!-- Titre principal centré avec couleur bleue et taille de police 2rem -->
+  
+      <p class="text-muted">
+        <!-- Texte d'introduction centré et en gris -->
+        Vous êtes connecté en tant que <span class="text-primary fw-bold">{{ role }}</span>.
+        <!-- Affichage dynamique du rôle utilisateur -->
+      </p>
+  
+      <div class="mt-4">
+        <!-- Conteneur du bouton avec un margin-top -->
+        <button class="btn btn-primary" (click)="goToLogin()">
+          Retour à la page de connexion
+        </button>
+      </div>
+    </div>
+  </div>
+  

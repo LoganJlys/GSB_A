@@ -1,0 +1,55 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%; border-radius: 10px;">
+      <h1 class="text-center text-primary mb-4">GSB</h1>
+  
+      <form (ngSubmit)="onSubmit()"> <!-- Appelle la méthode onSubmit() -->
+        <!-- Identifiant -->
+        <div class="mb-3">
+          <label for="login" class="form-label">Identifiant</label>
+          <input
+            type="text"
+            id="login"
+            class="form-control"
+            [(ngModel)]="login"
+            name="login"
+            placeholder="Entrez votre identifiant"
+            required
+          />
+        </div>
+  
+        <!-- Mot de passe -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Mot de passe</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            [(ngModel)]="motDePasse"
+            name="password"
+            placeholder="Entrez votre mot de passe"
+            required
+          />
+        </div>
+  
+        <!-- Sélection du rôle (Visiteur ou Comptable) -->
+        <div class="mb-3">
+          <label for="role" class="form-label">Rôle</label>
+          <select id="role" class="form-select" [(ngModel)]="role" name="role" required>
+            <option value="visiteur">Visiteur</option>
+            <option value="comptable">Comptable</option>
+          </select>
+        </div>
+  
+        <!-- Message d'erreur affiché en cas d'échec de la connexion -->
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+  
+        <!-- Bouton de connexion -->
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary">Se connecter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

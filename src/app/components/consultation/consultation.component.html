@@ -1,0 +1,48 @@
+<div class="container mt-4">
+    <h2>Consultation des Fiches de Frais</h2>
+  
+    <!-- Sélection du mois -->
+    <label for="mois">Sélectionner un mois :</label>
+    <select id="mois" [(ngModel)]="moisSelectionne" class="form-select">
+      <option *ngFor="let mois of moisDisponibles" [value]="mois.valeur">{{ mois.label }}</option>
+    </select>
+  
+    <!-- Bouton pour consulter les frais -->
+    <button (click)="consulterFicheDeFrais()" class="btn btn-primary mt-3">Consulter les frais</button>
+  
+    <!-- Affichage des erreurs -->
+    <div *ngIf="erreurMessage" class="alert alert-danger mt-3">{{ erreurMessage }}</div>
+  
+    <!-- Affichage des fiches de frais -->
+    <div *ngIf="fichesFrais.length > 0">
+      <div *ngFor="let fiche of fichesFrais; let i = index">
+        <!-- Suppression du titre de la fiche -->
+        <p class="text-primary">Fiche enregistrée le {{ fiche.date | date:'dd/MM/yyyy' }} ({{ fiche.date | date:'fullDate' }})</p>
+  
+        <!-- Table des frais -->
+        <table class="table table-bordered mt-3">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th>Libellé</th>
+              <th>Total (€)</th>
+              <th>État</th> <!-- Nouvelle colonne pour l'état -->
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ligne of fiche.lignesFrais">
+              <td>{{ ligne.libelle }}</td>
+              <td>{{ ligne.total | number:'1.2-2' }} €</td>
+              <td>{{ fiche.etat }}</td> <!-- Affichage dynamique de l'état -->
+              <td>
+                <!-- Modifier et Supprimer -->
+                <button (click)="modifierFiche(i, ligne)" class="btn btn-warning btn-sm">Modifier</button>
+                <button (click)="supprimerFiche(i, ligne)" class="btn btn-danger btn-sm">Supprimer</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

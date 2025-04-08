@@ -1,178 +1,178 @@
 <div class="container my-4">
-    <h2 class="text-center text-primary mb-4">Saisie fiche de frais</h2>
-  
-    <form (ngSubmit)="soumettreFiche()">
-      <!-- Sélection de la date -->
-      <div class="mb-3">
-        <label for="dateFrais" class="form-label">Date des frais</label>
-        <input
-          type="date"
-          id="dateFrais"
-          class="form-control"
-          [(ngModel)]="dateFrais"
-          name="dateFrais"
-          required
-          [min]="anneeCourante + '-01-01'"
-          [max]="anneeCourante + '-12-31'"
-        />
-      </div>
-  
-      <h4>Frais</h4>
-      <table class="table table-bordered text-center">
-        <thead>
-          <tr>
-            <th>Libellé</th>
-            <th>Quantité</th>
-            <th>Montant Unitaire (€)</th>
-            <th>Total (€)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Repas -->
-          <tr>
-            <td>
-              <input
-                type="text"
-                class="form-control"
-                [(ngModel)]="repas.libelle"
-                value="Repas"
-                name="repasLibelle"
-                disabled
-              />
-            </td>
-            <td>
-              <input
-                type="number"
-                class="form-control text-center"
-                min="0"
-                [(ngModel)]="repas.quantite"
-                name="repasQuantite"
-                (input)="onRepasChange()"
-              />
-            </td>
-            <td>
-              <input
-                type="number"
-                class="form-control text-center"
-                [(ngModel)]="repas.montantUnitaire"
-                name="repasMontantUnitaire"
-                (input)="onRepasChange()"
-              />
-            </td>
-            <td>
-              <input
-                type="number"
-                class="form-control text-center"
-                [(ngModel)]="repas.total"
-                name="repasTotal"
-                disabled
-              />
-            </td>
-          </tr>
-  
-          <!-- Nuit -->
-          <tr>
-            <td>
-              <input
-                type="text"
-                class="form-control"
-                [(ngModel)]="nuit.libelle"
-                value="Nuit"
-                name="nuitLibelle"
-                disabled
-              />
-            </td>
-            <td>
-              <input
-                type="number"
-                class="form-control text-center"
-                min="0"
-                [(ngModel)]="nuit.quantite"
-                name="nuitQuantite"
-                (input)="onNuitChange()"
-                [step]="1"
-              />
-            </td>
-            <td>
-              <input
-                type="number"
-                class="form-control text-center"
-                [(ngModel)]="nuit.montantUnitaire"
-                name="nuitMontantUnitaire"
-                (input)="onNuitChange()"
-              />
-            </td>
-            <td>
-              <input
-                type="number"
-                class="form-control text-center"
-                [(ngModel)]="nuit.total"
-                name="nuitTotal"
-                disabled
-              />
-            </td>
-          </tr>
-  
-          <!-- Frais kilométriques -->
-          <tr>
-            <td>
-              <input
-                type="text"
-                class="form-control"
-                value="Frais kilométriques"
-                name="fraisKilometriquesLibelle"
-                disabled
-              />
-            </td>
-            <td>
-              <input
-                type="number"
-                class="form-control text-center"
-                min="0"
-                [(ngModel)]="fraisKilometriques.quantite"
-                name="fraisKilometriquesQuantite"
-                (input)="calculateKilometricFee()"
-                [step]="1"
-              />
-            </td>
-            <td>
-              <select
-                class="form-control text-center"
-                [(ngModel)]="selectedCV"
-                name="selectedCV"
-                (change)="calculateKilometricFee()"
-              >
-                <option value="3-4">3 à 4 CV</option>
-                <option value="5-7">5 à 7 CV</option>
-                <option value="8-9">8 à 9 CV</option>
-                <option value="10-11">10 à 11 CV</option>
-                <option value="12+">12 CV et plus</option>
-              </select>
-            </td>
-            <td>
-              <input
-                type="number"
-                class="form-control text-center"
-                [(ngModel)]="fraisKilometriques.total"
-                name="fraisKilometriquesTotal"
-                disabled
-              />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-  
-      <!-- Boutons -->
-      <button class="btn btn-primary mt-3" type="submit">Envoyer la fiche de frais</button>
-      <button type="button" class="btn btn-secondary" (click)="resetForm()">Effacer</button>
-  
-      <!-- Messages d'erreur ou de succès -->
-      <div *ngIf="errorMessage" class="alert alert-danger mt-3">
-        {{ errorMessage }}
-      </div>
-      <div *ngIf="successMessage" class="alert alert-success mt-3">
-        {{ successMessage }}
-      </div>
-    </form>
-  </div>
-  
+  <h2 class="text-center mb-4">Saisie fiche de frais</h2>
+
+  <form (ngSubmit)="soumettreFiche()">
+    <!-- Sélection de la date -->
+    <div class="mb-3">
+      <label for="dateFrais" class="form-label">Date des frais</label>
+      <input
+        type="date"
+        id="dateFrais"
+        class="form-control"
+        [(ngModel)]="dateFrais"
+        name="dateFrais"
+        required
+        [min]="anneeCourante + '-01-01'"
+        [max]="anneeCourante + '-12-31'"
+      />
+    </div>
+
+    <h4>Frais</h4>
+    <table class="table table-bordered text-center">
+      <thead>
+        <tr>
+          <th>Libellé</th>
+          <th>Quantité</th>
+          <th>Montant Unitaire (€)</th>
+          <th>Total (€)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Repas -->
+        <tr>
+          <td>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="repas.libelle"
+              value="Repas"
+              name="repasLibelle"
+              disabled
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              class="form-control text-center"
+              min="0"
+              [(ngModel)]="repas.quantite"
+              name="repasQuantite"
+              (input)="onRepasChange()"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              class="form-control text-center"
+              [(ngModel)]="repas.montantUnitaire"
+              name="repasMontantUnitaire"
+              (input)="onRepasChange()"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              class="form-control text-center"
+              [(ngModel)]="repas.total"
+              name="repasTotal"
+              disabled
+            />
+          </td>
+        </tr>
+
+        <!-- Nuit -->
+        <tr>
+          <td>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="nuit.libelle"
+              value="Nuit"
+              name="nuitLibelle"
+              disabled
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              class="form-control text-center"
+              min="0"
+              [(ngModel)]="nuit.quantite"
+              name="nuitQuantite"
+              (input)="onNuitChange()"
+              [step]="1"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              class="form-control text-center"
+              [(ngModel)]="nuit.montantUnitaire"
+              name="nuitMontantUnitaire"
+              (input)="onNuitChange()"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              class="form-control text-center"
+              [(ngModel)]="nuit.total"
+              name="nuitTotal"
+              disabled
+            />
+          </td>
+        </tr>
+
+        <!-- Frais kilométriques -->
+        <tr>
+          <td>
+            <input
+              type="text"
+              class="form-control"
+              value="Frais kilométriques"
+              name="fraisKilometriquesLibelle"
+              disabled
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              class="form-control text-center"
+              min="0"
+              [(ngModel)]="fraisKilometriques.quantite"
+              name="fraisKilometriquesQuantite"
+              (input)="calculateKilometricFee()"
+              [step]="1"
+            />
+          </td>
+          <td>
+            <select
+              class="form-control text-center"
+              [(ngModel)]="selectedCV"
+              name="selectedCV"
+              (change)="calculateKilometricFee()"
+            >
+              <option value="3-4">3 à 4 CV</option>
+              <option value="5-7">5 à 7 CV</option>
+              <option value="8-9">8 à 9 CV</option>
+              <option value="10-11">10 à 11 CV</option>
+              <option value="12+">12 CV et plus</option>
+            </select>
+          </td>
+          <td>
+            <input
+              type="number"
+              class="form-control text-center"
+              [(ngModel)]="fraisKilometriques.total"
+              name="fraisKilometriquesTotal"
+              disabled
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-start mt-3">
+      <button class="btn btn-primary me-2" type="submit">Envoyer </button>
+      <button class="btn btn-danger" type="button" (click)="resetForm()">Effacer</button>
+    </div>
+
+    <!-- Messages d'erreur ou de succès -->
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+      {{ errorMessage }}
+    </div>
+    <div *ngIf="successMessage" class="alert alert-success mt-3">
+      {{ successMessage }}
+    </div>
+  </form>
+</div>

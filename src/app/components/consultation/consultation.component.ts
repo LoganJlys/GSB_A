@@ -12,7 +12,7 @@ interface FicheFrais {
   mois: string;
   etat: string;  // Assurez-vous que l'état est bien un attribut de la fiche
   lignesFrais: LigneFrais[];
-  date: string;
+  date_modif: string;  // Date de modification
 }
 
 @Component({
@@ -81,9 +81,9 @@ export class ConsultationComponent implements OnInit {
 
             return {
               mois: fiche.mois,
-              etat: fiche.etat?.libelle || 'Inconnu',  // Assurez-vous que l'état est bien récupéré
+              etat: fiche.etat?.libelle || 'Inconnu',
               lignesFrais: [...fraisForfait, ...fraisHorsForfait],
-              date: fiche.date // Assurez-vous que la date est incluse
+              date_modif: fiche.date_modif // Récupération de la date de modification
             };
           });
           this.erreurMessage = "";

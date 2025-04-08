@@ -22,7 +22,6 @@ export class ConsultationService {
     return this.http.get<any[]>(`${this.baseUrl}/historique/${userId}/${moisFormat}`)
       .pipe(catchError(this.handleError));
   }
-
   // Gestion des erreurs HTTP
   private handleError(error: any) {
     console.error("Erreur API :", error);
